@@ -28,7 +28,7 @@
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
                 @foreach ($links as $link)
-                    @if (isset($link['is_dropdown'])) 
+                    @if ($link['is_dropdown'] === true) 
                     <li class="nav-item {{ $link['is_active'] ? 'active' : '' }}">
                       <a
                         data-bs-toggle="collapse"
@@ -40,6 +40,7 @@
                         <p>{{ $link['label'] }}</p>
                         <span class="caret"></span>
                       </a>
+                      
                       <div class="collapse" id="dashboard">
                         <ul class="nav nav-collapse">
                           @foreach ($link['items'] as $item)

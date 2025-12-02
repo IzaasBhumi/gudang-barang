@@ -20,14 +20,14 @@ class Sidebar extends Component
                 'route' => 'home',
                 'is_active' => request()->routeIs('home'),
                 'icon' => 'fas fa-chart-line',
-                'is_dropdown' => 'false'
+                'is_dropdown' => false
             ],
             [
                 'label' => 'Master Data',
                 'route' => '#',
                 'is_active' => request()->routeIs('master-data.*'),
                 'icon' => 'fas fa-cloud',
-                'is_dropdown' => 'true',
+                'is_dropdown' => true,
                 'items' => [
                     [
                         'label' => 'Kategori Produk',
