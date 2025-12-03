@@ -15,6 +15,7 @@ class KategoriProdukController extends Controller
         $pageTitle = $this->pageTitle;
         $query = KategoriProduk::query();
         $kategori = $query->paginate(10);
+        confirmDelete('Hapus data kategori Produk tidak dapat dibatalkan, lanjutkan ?');
         return view('kategori-produk.index', compact('pageTitle', 'kategori'));
     }
     public function store(storeKategoriProdukRequest $request){
@@ -29,6 +30,12 @@ class KategoriProdukController extends Controller
         $kategoriProduk->nama_kategori = $request->nama_kategori;
         $kategoriProduk->save();
         toast()->success('Kategori Produk berhasil ditambahkan');
+        return redirect()->route('master-data.kategori-produk.index');
+    }
+    public function destroy(KategoriProduk $kategoriProduk)
+    {
+        $kategoriProduk->delete();
+        toast()->success('Kategori Produk berhasil dihapus');
         return redirect()->route('master-data.kategori-produk.index');
     }
 }
