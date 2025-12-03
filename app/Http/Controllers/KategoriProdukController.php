@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\storeKategoriProdukRequest;
+use App\Http\Requests\updateKategoriProdukRequest;
 use Illuminate\Http\Request;
 use App\Models\KategoriProduk;
 
@@ -20,6 +21,13 @@ class KategoriProdukController extends Controller
         KategoriProduk::create([
             'nama_kategori' => $request->nama_kategori
         ]);
+        toast()->success('Kategori Produk berhasil ditambahkan');
+        return redirect()->route('master-data.kategori-produk.index');
+    }
+    public function update(updateKategoriProdukRequest $request, KategoriProduk $kategoriProduk)
+    {
+        $kategoriProduk->nama_kategori = $request->nama_kategori;
+        $kategoriProduk->save();
         toast()->success('Kategori Produk berhasil ditambahkan');
         return redirect()->route('master-data.kategori-produk.index');
     }

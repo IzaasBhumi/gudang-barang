@@ -18,7 +18,11 @@
                   <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $item->nama_kategori }}</td>
-                    <td></td>
+                    <td>
+                      <div>
+                        <x-kategori-produk.form-kategori-produk id="{{ $item->id }}"/>
+                      </div>
+                    </td>
                   </tr>
               @empty
                   <tr>
