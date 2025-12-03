@@ -143,21 +143,21 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                        </div>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
+                                  </div>
+                                </li>
+                              </div>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </nav>
           <!-- End Navbar -->
         </div>
 
         <div class="container">
           <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">@yield('title', 'Gudang App')</h4>
+                <h4 class="page-title">@yield('page_title', 'Gudang App')</h4>
             </div>
               @yield('content')
           </div>
