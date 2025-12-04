@@ -13,6 +13,7 @@
       href="{{ asset('template') }}/assets/img/kaiadmin/favicon.ico"
       type="image/x-icon"
     />
+    <meta name="csrf_token" content="{{ csrf_token() }}">
 
     <!-- Fonts and icons -->
     <script src="{{ asset('template') }}/assets/js/plugin/webfont/webfont.min.js"></script>
@@ -226,5 +227,6 @@
     <!-- Kaiadmin JS -->
     <script src="{{ asset('template') }}/assets/js/kaiadmin.min.js"></script>
     
+    @stack('script')
   </body>
 </html>
