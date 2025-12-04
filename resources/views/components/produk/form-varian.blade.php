@@ -1,8 +1,11 @@
 <div>
     <!-- Modal -->
-<div class="modal fade" id="modalFormVarian" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalFormVarianLabel" aria-hidden="true">
+<div class="modal fade" id="modalFormVarian" data-bs-backdrop="static" data-bs-keyboard="false" 
+tabindex="-1" aria-labelledby="modalFormVarianLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form method="POST" enctype="multipart/form-data" action="{{ $action }}">
+    <form method="POST" enctype="multipart/form-data" action="{{ $action ?? route('varian-produk.store')}}">
+      @csrf
+      <input type="hidden" name="produk_id" id="produk_id" value="{{ $produk_id ?? '' }}">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalFormVarianLabel">Form Varian</h1>

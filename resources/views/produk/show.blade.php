@@ -19,17 +19,23 @@
                     </div>
                     {{-- looping semua data variant --}}
                     <div class="row mt-2">
+                        @forelse ($produk->varian as $item)
+                        <div class="col-4">
+                            <x-produk.card-varian :varian="$item"/>
+                        </div>
+                        @empty
                         <div class="cols-12">
                             <div class="alert alert-info" style="box-shadow: none;">
                                 <span>Belum ada varian produk, silahkan tambahkan yang baru</span>
                             </div>
                         </div>
+                        @endforelse
                     </div>
                     {{--end looping semua data variant --}}
                 </div>
             </div>
         </div>
-<x-produk.form-varian />
+<x-produk.form-varian action="route('varian-produk.store')" produk_id="$produk->id"/>
 @endsection
 @push('script')
     <script>
@@ -44,25 +50,55 @@
               $form.attr('action');
               $form.find('small.text-danger').text('');
               $('#modalFormVarian .modal-title').text('Tambah Varian Baru');
+            });
+
+            $(".btnEditVarian").on('click', function (){
+              let nama_varian = $(this).data('nama-varian');
+              let harga_varian = $(this).data('harga_varian');
+              let stok_varian = $(this).data('stok_varian');
+              let action = $(this).data('action');
+
+              $form[0].reset();
+              $form.attr('action', action);
+
+              $form.append('<input type="hidden" name="_method" value="PUT">');
+
+              $form.find('input[name="nama_varian"]').val(nama-varian);
+              $form.find('input[name="harga_varian"]').val(harga-varian);
+              $form.find('input[name="stok_varian"]').val(stok-varian);
+              $form.find('small-text-danger').text('');
+              $('#modalFormVarian .modal-title').text('Edit Varian');
+
               modal.show();
             });
             
             $form.submit(function(e){
+                e.preventDefault();
                 let formData = new FormData(this);
 
                 $.ajax({
                     type: $form.attr('method'),
                     url: $form.attr('action'),
-                    data: "formData",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (response) {
-                      alert('test')
+                      swal({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: response.message,
+                        timer:2000
+                      }).then(()=>{
+                        modal.hide();
+                        location.reload();
+                      })
                     },
                     error: function (xhr){
                         let errors = xhr.responseJSON.errors;
                         console.log(errors);
                         $form.find('small.text-danger').text('');
                         $.each(errors, function(key, val){
-                            $form.find(['name="' + key + '"']).next('small.text-danger').text(val[0]);
+                            $form.find('[name="' + key + '"]').next('small.text-danger').text(val[0]);
                         })
                     }
                 });

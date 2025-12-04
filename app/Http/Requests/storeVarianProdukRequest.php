@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class updateKategoriProdukRequest extends FormRequest
+class storeVarianProdukRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,11 @@ class updateKategoriProdukRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_kategori' => 'required|unique:kategori_produks,nama_kategori,' . $this->kategori_produks->id, 
-        ];
-    }
-    public function messages(): array{
-        return [
-            'required' => 'attribute nama kategori wajib diisi',
-            'unique' => 'attribute nama kategori sudah ada'
+            'produk_id' => 'required|exists:produks,id',
+            'nama_varian' => 'required',
+            'harga_varian' => 'required|numeric|min:0',
+            'stok_varian' => 'required|numeric|min:0',
+            'gambar_varian' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }
