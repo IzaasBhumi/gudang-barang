@@ -10,10 +10,10 @@
             <x-per-page-option />
           </div>
           <div>
-            <div class="col-9">
+            <div class="col-8">
               <x-filter-by-field term='search' placeholder='Cari kategori produk'/>
             </div>
-            <div class="col-1">
+            <div class="col-2">
               <x-button-reset-filter route="master-data.kategori-produk.index"/>
             </div>
           </div>

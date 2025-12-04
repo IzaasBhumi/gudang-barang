@@ -5,7 +5,17 @@
     <div class="card-body py-5">
       <div class="row align-items-center">
         {{-- filter --}}
-        <div class="row col-10"></div>
+        <div class="row col-10 align-items-center justify-content-between">
+          <div class="col-1">
+            <x-per-page-option />
+          </div>
+          <div class="col-8">
+            <x-filter-by-field term="search" placeholder="Cari produk"/>
+          </div>
+          <div class="col-2">
+            <x-button-reset-filter route="master-data.produk.index"/>
+          </div>
+        </div>
         {{-- end filter --}}
           {{-- form --}}
           <div class="col-2 d-flex justify-content-end">
@@ -26,10 +36,14 @@
               @forelse ($produk as $index => $item)
                   <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $item->nama_produk }}</td>
+                    <td>
+                      <a href="{{ route('master-data.produk.show', $item->id)  }}" 
+                        class="text-decoration-none">{{ $item->nama_produk }}</a>
+                    </td>
                     <td>{{ $item->kategori->nama_kategori }}</td>
                     <td>
                       <div class="d-flex align-items-center gap-1">
+                        <x-produk.form-produk id="{{ $item->id }}"/>
                         <x-confirm-delete id="{{ $item->id }}" route="master-data.produk.destroy"/>
                       </div>
                     </td>
