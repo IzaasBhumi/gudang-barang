@@ -54,18 +54,19 @@
 
             $(".btnEditVarian").on('click', function (){
               let nama_varian = $(this).data('nama-varian');
-              let harga_varian = $(this).data('harga_varian');
-              let stok_varian = $(this).data('stok_varian');
+              let harga_varian = $(this).data('harga-varian');
+              let stok_varian = $(this).data('stok-varian');
               let action = $(this).data('action');
 
               $form[0].reset();
               $form.attr('action', action);
 
+              $form.find('input[name="_method"]').remove();
               $form.append('<input type="hidden" name="_method" value="PUT">');
 
-              $form.find('input[name="nama_varian"]').val(nama-varian);
-              $form.find('input[name="harga_varian"]').val(harga-varian);
-              $form.find('input[name="stok_varian"]').val(stok-varian);
+              $form.find('input[name="nama_varian"]').val(nama_varian);
+              $form.find('input[name="harga_varian"]').val(harga_varian);
+              $form.find('input[name="stok_varian"]').val(stok_varian);
               $form.find('small-text-danger').text('');
               $('#modalFormVarian .modal-title').text('Edit Varian');
 
@@ -103,6 +104,22 @@
                     }
                 });
             })
+        $(".formDeleteVarian").on('click', function (e){
+            e.preventDefault();
+            const form = this;
+            swal({
+                title: 'Apakah anda yakin?',
+                text: 'Anda tidak dapat mengembalikan data ini',
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+            }).then((isConfirm)=>{
+                if(isConfirm){
+                    form.submit();
+                }
+            })
         });
+
+    });
     </script>
 @endpush

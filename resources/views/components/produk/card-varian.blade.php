@@ -17,5 +17,13 @@
                 Edit
             </button>
         </div>
+        <form action="{{ route('master-data.varian-produk.destroy', $varian->id) }}" 
+            method="POST" class="formDeleteVarian">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">
+                Hapus
+            </button>
+        </form>
     </div>
 </div>

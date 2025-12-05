@@ -22,7 +22,11 @@ class updateVarianProdukRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'produk_id' => 'required|exists:produks,id',
+            'nama_varian' => 'required',
+            'harga_varian' => 'required|numeric|min:0',
+            'stok_varian' => 'required|numeric|min:0',
+            'gambar_varian' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }
