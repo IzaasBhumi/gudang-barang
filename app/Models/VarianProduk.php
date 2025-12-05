@@ -8,6 +8,10 @@ class VarianProduk extends Model
 {
     protected $fillable = ['produk_id', 'nomor_sku', 'nama_varian', 'harga_varian', 'stok_varian', 'gambar_varian'];
 
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class);
+    }
     public static function generateNomorSKU()
     {
         $maxId = self::max('id');
