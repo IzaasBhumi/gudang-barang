@@ -41,7 +41,7 @@ class StokBarangController extends Controller
                 'nomor_sku' => $q->nomor_sku,
                 'produk' => $q->produk->nama_produk . " " . $q->nama_varian,
                 'kategori' => $q->produk->kategori->nama_kategori,
-                'stok' => $q->stok,
+                'stok' => $q->stok_varian,
                 'harga' => $q->harga_varian,
             ];
         });
