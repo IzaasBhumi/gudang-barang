@@ -27,12 +27,12 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                @foreach ($links as $link)
+                @foreach ($links as $index => $link)
                     @if ($link['is_dropdown'] === true) 
                     <li class="nav-item {{ $link['is_active'] ? 'active' : '' }}">
                       <a
                         data-bs-toggle="collapse"
-                        href="#dashboard"
+                        href="#{{ $index }}"
                         class="collapsed"
                         aria-expanded="false"
                       >
@@ -41,7 +41,7 @@
                         <span class="caret"></span>
                       </a>
                       
-                      <div class="collapse" id="dashboard">
+                      <div class="collapse" {{ $link['is_active'] ? 'show' : '' }} id="{{ $index }}">
                         <ul class="nav nav-collapse">
                           @foreach ($link['items'] as $item)
                           <li>
