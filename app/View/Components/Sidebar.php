@@ -16,7 +16,7 @@ class Sidebar extends Component
     {
         $this->links = [
             [
-                'label' => 'Dashboard Analitik',
+                'label' => 'Dashboard',
                 'route' => 'home',
                 'is_active' => request()->routeIs('home'),
                 'icon' => 'fas fa-chart-line',
@@ -43,6 +43,7 @@ class Sidebar extends Component
                     ]
                 ]
             ],
+            /* masih ada bug di tutup sementara */
             [
                 'label' => 'Transaksi Masuk',
                 'route' => '#',
@@ -54,10 +55,10 @@ class Sidebar extends Component
                         'label' => 'Transaksi Baru',
                         'route' => 'transaksi-masuk.create'
                     ],
-                    [
-                        'label' => 'Data Transaksi',
-                        'route' => 'transaksi-masuk.index'
-                    ],
+                    // [
+                    //     'label' => 'Data Transaksi',
+                    //     'route' => 'transaksi-masuk.index'
+                    // ],
                 ]
             ],
         ];
