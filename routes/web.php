@@ -4,6 +4,7 @@ use App\Http\Controllers\KartuStokController;
 use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\StokBarangController;
+use App\Http\Controllers\TransaksiKeluarController;
 use App\Http\Controllers\TransaksiMasukController;
 use App\Http\Controllers\VarianProdukController;
 use Illuminate\Support\Facades\Auth;
@@ -32,4 +33,5 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/kartu-stok/{nomor_sku}', [KartuStokController::class, 'kartuStok'])->name('kartu-stok');
     Route::resource('transaksi-masuk', TransaksiMasukController::class)->only('index', 'create', 'store', 'show');
+    Route::resource('transaksi-keluar', TransaksiKeluarController::class)->only('index', 'create', 'store', 'show');
 });

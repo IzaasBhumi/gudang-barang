@@ -43,7 +43,6 @@ class Sidebar extends Component
                     ]
                 ]
             ],
-            /* masih ada bug di tutup sementara */
             [
                 'label' => 'Transaksi Masuk',
                 'route' => '#',
@@ -55,10 +54,19 @@ class Sidebar extends Component
                         'label' => 'Transaksi Baru',
                         'route' => 'transaksi-masuk.create'
                     ],
-                    // [
-                    //     'label' => 'Data Transaksi',
-                    //     'route' => 'transaksi-masuk.index'
-                    // ],
+                ]
+            ],
+            [
+                'label' => 'Transaksi Keluar',
+                'route' => '#',
+                'is_active' => request()->routeIs('transaksi-keluar.*'),
+                'icon' => 'fas fa-dollar-sign',
+                'is_dropdown' => true,
+                'items' => [
+                    [
+                        'label' => 'Transaksi Baru',
+                        'route' => 'transaksi-keluar.create'
+                    ],
                 ]
             ],
         ];
